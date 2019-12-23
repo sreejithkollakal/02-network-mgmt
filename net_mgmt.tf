@@ -92,5 +92,16 @@ resource "azurerm_network_security_group" "nsg1" {
     source_address_prefix      = "10.0.0.0/8"
     destination_address_prefix = "*"
   }
+    security_rule {
+    name                       = "Inbound_Allow_80"
+    priority                   = 200
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "80"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
   depends_on = [azurerm_resource_group.rg1]
 }
